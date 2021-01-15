@@ -70,10 +70,6 @@ const intToRoman = (num) => {
     return result;
 }
 
-// for (i=0; i<numerals.length; i++) {
-//     console.log(numerals[i].value);
-// }
-
 const tes = intToRoman(1000);
 console.log(tes);
 
