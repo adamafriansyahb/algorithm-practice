@@ -69,23 +69,68 @@ class LinkedList {
     // get data from a specific index
     getData(index) {
         let current = this.head;
-
+        // check if index exists
         if (index > this.size && index > 0) {
             console.log("Index out of range");
         }
+        // check if first index is wanted
         else if (index === 0) {
             console.log(current.data);
         }
         else {
             let count = 0;
-            let data;
-    
+            // traverse the linked list until it reaches the desired index
             while (count < index) {
                 current = current.next
                 count++;
             }
-    
             console.log(current.data);
+        }
+    }
+
+    // delete data in first index
+    deleteFirst() {
+        this.head = this.head.next;
+        this.size--;
+    }
+
+    // delete data in the last index
+    deleteLast() {
+        let previous;
+        let current = this.head;
+        // traverse the linked list until it reaches the last index
+        while (current.next) {
+            previous = current;
+            current = current.next;
+        }
+        // remove the last index
+        previous.next = null;
+        this.size--;
+    }
+
+    // delete a data of particular index
+    deleteAt(index) {
+        let current = this.head;
+        let previous;
+        let count = 0;
+        
+        // if the given index does not exist
+        if (index > 0 && index > this.size) {
+            return;
+        }
+        // if the desired index is the first index
+        else if (index == 0) {
+            this.head = current.next;
+            this.size--;
+        }
+        else {
+            while(count < index) {
+                previous = current;
+                current = current.next;
+                count++;
+            }
+            previous.next = current.next;
+            this.size--;
         }
     }
 
@@ -94,7 +139,6 @@ class LinkedList {
         let current = this.head;
         let arr = '';
         while (current) {
-            // console.log(current.data);
             arr += current.data
             current = current.next; 
             if (current) {
@@ -111,9 +155,14 @@ ll.insertFirst(20);
 ll.insertFirst(30);
 ll.insertLast(40);
 ll.insertAt(50, 2);
+ll.insertLast(60);
 
+console.log('Original linked list:');
 ll.printData();
-console.log('------------');
-ll.getData(3)
 
+console.log('--------------');
 
+console.log('After deletion:');
+ll.deleteLast();
+ll.deleteLast();
+ll.printData();
