@@ -13,15 +13,12 @@ function fibonacci(n) {
 }
 
 function hehe(n){
-    let counter = 0;
     let arr = []
-    for (let i=1; i<=n; i++){
-        // console.log(fibonacci(counter));
-        arr.push(fibonacci(counter))
-        counter++;
+    for (let i=0; i<n; i++){
+        arr.push(fibonacci(i))
     }
 
     return arr;
 }
 
-console.log(hehe(4))
+console.log(hehe(8))
