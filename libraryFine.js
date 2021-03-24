@@ -4,12 +4,15 @@ const libraryFine = (d1, m1, y1, d2, m2, y2) => {
     const yearDifference = y1 - y2;
     let fine = 0;
     
-    if (dayDifference > 0) {
         if (monthDifference < 0 && yearDifference < 0) {
             fine += 0;
         }
         else if (monthDifference == 0 && yearDifference == 0) {
-            fine += 15 * dayDifference;
+            if (dayDifference > 0) {
+                fine += 15 * dayDifference;
+            } else {
+                fine += 0
+            }
         }
         else if (monthDifference > 0 && yearDifference == 0) {
             fine += 500 * monthDifference;
@@ -17,17 +20,6 @@ const libraryFine = (d1, m1, y1, d2, m2, y2) => {
         else if (yearDifference > 0) {
             fine += 10000
         }
-    } else {
-        if (monthDifference <= 0 && yearDifference <= 0) {
-            fine += 0
-        }
-        else if (monthDifference > 0 && yearDifference == 0) {
-            fine += 500 * monthDifference
-        }
-        else if (yearDifference > 0) {
-            fine += 10000
-        }
-    }
 
     console.log('day', dayDifference)
     console.log('month', monthDifference)
